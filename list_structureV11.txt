@@ -1,0 +1,1423 @@
+----- Directory Structure -----
+./lft-deepseek
+./lft-deepseek/LTF_DOCKER-buckup-before deepseek.zip
+./lft-deepseek/app
+./lft-deepseek/app/services
+./lft-deepseek/app/services/transfer_service.py
+./lft-deepseek/app/services/terminal_service.py
+./lft-deepseek/app/services/__pycache__
+./lft-deepseek/app/services/__pycache__/__init__.cpython-39.pyc
+./lft-deepseek/app/services/__pycache__/transfer_service.cpython-39.pyc
+./lft-deepseek/app/services/__pycache__/terminal_service.cpython-39.pyc
+./lft-deepseek/app/services/__pycache__/file_service.cpython-39.pyc
+./lft-deepseek/app/services/__init__.py
+./lft-deepseek/app/services/file_service.py
+./lft-deepseek/app/static
+./lft-deepseek/app/static/img
+./lft-deepseek/app/static/img/folder.png
+./lft-deepseek/app/static/img/file.png
+./lft-deepseek/app/static/css
+./lft-deepseek/app/static/css/style.css
+./lft-deepseek/app/static/css/custom.css
+./lft-deepseek/app/static/css/main.css
+./lft-deepseek/app/static/js
+./lft-deepseek/app/static/js/terminal.js
+./lft-deepseek/app/static/js/custom.js
+./lft-deepseek/app/static/js/script.js
+./lft-deepseek/app/models.py
+./lft-deepseek/app/routes.py
+./lft-deepseek/app/__pycache__
+./lft-deepseek/app/__pycache__/__init__.cpython-39.pyc
+./lft-deepseek/app/__pycache__/models.cpython-39.pyc
+./lft-deepseek/app/__pycache__/routes.cpython-39.pyc
+./lft-deepseek/app/__init__.py
+./lft-deepseek/app/templates
+./lft-deepseek/app/templates/terminal.html
+./lft-deepseek/app/templates/500.html
+./lft-deepseek/app/templates/base.html
+./lft-deepseek/app/templates/404.html
+./lft-deepseek/app/templates/browse.html
+./lft-deepseek/app/templates/index.html
+./lft-deepseek/requirements.txt
+./lft-deepseek/config
+./lft-deepseek/config/settings.py
+./lft-deepseek/Dockerfile
+./lft-deepseek/docker-compose.yml
+./lft-deepseek/writing
+./lft-deepseek/build_and_run.sh
+./lft-deepseek/exporting
+./lft-deepseek/main.py
+./lft-deepseek/=
+./lft-deepseek/reading
+./lft-deepseek/CACHED
+./lft-deepseek/[internal]
+./lft-deepseek/transferring
+./lft-deepseek/scripts
+./lft-deepseek/templates
+./lft-deepseek/templates/dashboard.html
+./lft-deepseek/templates/ssh_terminal.html
+./lft-deepseek/naming
+./lft-deepseek/resolving
+
+----- Files Contents -----
+=== ./lft-deepseek/app/services/transfer_service.py ===
+class TransferService:
+    @staticmethod
+    def transfer_file(source, destination):
+        """Transfer file between locations"""
+        # Implementation goes here
+        return True
+
+-----------------------------
+=== ./lft-deepseek/app/services/terminal_service.py ===
+import subprocess
+
+class TerminalService:
+    @staticmethod
+    def execute_command(command):
+        """Execute a shell command"""
+        try:
+            result = subprocess.run(
+                command,
+                shell=True,
+                check=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+            return result.stdout
+        except subprocess.CalledProcessError as e:
+            return e.stderr
+
+-----------------------------
+=== ./lft-deepseek/app/services/__init__.py ===
+from .file_service import FileService
+from .terminal_service import TerminalService
+from .transfer_service import TransferService
+
+__all__ = ['FileService', 'TerminalService', 'TransferService']
+
+-----------------------------
+=== ./lft-deepseek/app/services/file_service.py ===
+class FileService:
+    @staticmethod
+    def list_files(directory):
+        """List files in a directory"""
+        # Implementation goes here
+        return []
+    
+    @staticmethod
+    def upload_file(file_obj, destination):
+        """Upload a file"""
+        # Implementation goes here
+        return True
+
+-----------------------------
+=== ./lft-deepseek/app/static/css/style.css ===
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#matrixTitle {
+    font-family: 'Courier New', monospace;
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.connection-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.connection-form > * {
+    flex: 1 1 200px;
+}
+
+.connection-form input,
+.connection-form select,
+.connection-form button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.connection-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.connection-form button:hover {
+    background-color: #0056b3;
+}
+
+.status-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    margin-left: 5px;
+    transition: background-color 0.3s;
+}
+
+#fileBrowser {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+nav button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav button:hover {
+    background-color: #0056b3;
+}
+
+.file-browser {
+    padding: 20px;
+}
+
+.file-browser ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.file-browser li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.file-browser li:last-child {
+    border-bottom: none;
+}
+
+.file-browser li::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.file-browser li.folder::before {
+    background-image: url('/static/img/folder.png');
+}
+
+.file-browser li.file::before {
+    background-image: url('/static/img/file.png');
+}
+
+.file-browser li:hover {
+    background-color: #f0f0f0;
+}
+
+.file-browser li.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .connection-form > * {
+        flex: 1 1 100%;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav button {
+        flex: 1 1 calc(50% - 5px);
+        margin-bottom: 10px;
+    }
+}
+
+-----------------------------
+=== ./lft-deepseek/app/static/css/custom.css ===
+/* Soft gradient primary buttons */
+.btn-gradient {
+    background: linear-gradient(90deg, #4e54c8, #8f94fb);
+    border: none;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.btn-gradient:hover {
+    filter: brightness(0.95);
+    color: #fff;
+}
+
+/* Rounded cards with a subtle shadow */
+.card {
+    border-radius: 1rem;
+}
+
+/* File input styling */
+input[type="file"] {
+    cursor: pointer;
+}
+
+/* Improve focus outlines */
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(78, 84, 200, 0.25);
+    border-color: #4e54c8;
+}
+
+-----------------------------
+=== ./lft-deepseek/app/static/css/main.css ===
+:root {
+    --bg-color: #1e1e2e;
+    --panel-color: #2a2a3a;
+    --accent-color: #7aa2f7;
+    --text-color: #c0caf5;
+    --text-secondary: #a9b1d6;
+    --success-color: #9ece6a;
+    --warning-color: #e0af68;
+    --error-color: #f7768e;
+    --border-radius: 8px;
+}
+
+body {
+    font-family: 'DejaVu Sans Mono', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    background-color: var(--panel-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+}
+
+.main-content {
+    display: grid;
+    gap: 20px;
+}
+
+.panel {
+    background-color: var(--panel-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+}
+
+/* Additional styles from previous HTML implementation */
+
+-----------------------------
+=== ./lft-deepseek/app/static/js/terminal.js ===
+document.addEventListener('DOMContentLoaded', () => {
+    const socket = io();
+    const terminal = document.getElementById('terminal');
+    
+    // Initialize terminal UI
+    const prompt = 'lanlinediCloud:/volume1/docker/LTF8 $';
+    terminal.innerHTML = `<div class="terminal-line"><span class="prompt">${prompt}</span> <input type="text" class="command-input" autofocus></div>`;
+    
+    // Handle command input
+    terminal.addEventListener('keydown', (e) => {
+        if (e.target.classList.contains('command-input') && e.key === 'Enter') {
+            const command = e.target.value.trim();
+            if (command) {
+                // Display command
+                const commandLine = document.createElement('div');
+                commandLine.className = 'terminal-line';
+                commandLine.innerHTML = `<span class="prompt">${prompt}</span> ${command}`;
+                terminal.appendChild(commandLine);
+                
+                // Send command to server
+                socket.emit('terminal_command', { command });
+                
+                // Clear input
+                e.target.value = '';
+            }
+        }
+    });
+    
+    // Handle output from server
+    socket.on('terminal_output', (data) => {
+        const outputDiv = document.createElement('div');
+        outputDiv.textContent = data.data;
+        terminal.appendChild(outputDiv);
+        terminal.scrollTop = terminal.scrollHeight;
+    });
+    
+    socket.on('terminal_error', (data) => {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error';
+        errorDiv.textContent = data.data;
+        terminal.appendChild(errorDiv);
+        terminal.scrollTop = terminal.scrollHeight;
+    });
+});
+
+-----------------------------
+=== ./lft-deepseek/app/static/js/custom.js ===
+// Example JS for extra UX polish
+document.addEventListener("DOMContentLoaded", function () {
+    const uploadForm = document.querySelector("form");
+    if (uploadForm) {
+        uploadForm.addEventListener("submit", function () {
+            alert("Uploading file... Please wait.");
+        });
+    }
+});
+
+-----------------------------
+=== ./lft-deepseek/app/static/js/script.js ===
+// ~/LTF/LFT_DOCKER/static/js/script.js
+
+let currentPath = '/';
+
+function updateDefaultPort() {
+    const protocol = document.getElementById('protocol').value;
+    const portInput = document.getElementById('port');
+    switch(protocol) {
+        case 'sftp': portInput.value = '22'; break;
+        case 'ftp': portInput.value = '21'; break;
+        case 'smb': portInput.value = '445'; break;
+        case 'webdav': portInput.value = '80'; break;
+    }
+}
+
+function connect() {
+    const data = {
+        protocol: document.getElementById('protocol').value,
+        server: document.getElementById('server').value,
+        port: document.getElementById('port').value,
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value
+    };
+    axios.post('/connect', data)
+        .then(response => {
+            alert(response.data.message);
+            updateConnectionStatus(true);
+            document.getElementById('fileBrowser').style.display = 'block';
+            listFiles(currentPath);
+        })
+        .catch(error => {
+            alert(error.response.data.message);
+            updateConnectionStatus(false);
+        });
+}
+
+function updateConnectionStatus(isConnected) {
+    const statusIcon = document.querySelector('.status-icon');
+    statusIcon.style.backgroundColor = isConnected ? 'green' : 'red';
+}
+
+function listFiles(path) {
+    currentPath = path;
+    axios.post('/list_files', { path: path })
+        .then(response => {
+            const fileList = document.getElementById('fileList');
+            fileList.innerHTML = '';
+            if (path !== '/') {
+                const li = document.createElement('li');
+                li.textContent = '..';
+                li.classList.add('folder');
+                li.onclick = () => listFiles(path.split('/').slice(0, -1).join('/') || '/');
+                fileList.appendChild(li);
+            }
+            response.data.files.forEach(file => {
+                const li = document.createElement('li');
+                li.textContent = file.name;
+                li.classList.add(file.isDirectory ? 'folder' : 'file');
+                li.onclick = () => file.isDirectory ? listFiles(path + '/' + file.name) : selectFile(li);
+                fileList.appendChild(li);
+            });
+        })
+        .catch(error => alert(error.response.data.message));
+}
+
+function selectFile(element) {
+    document.querySelectorAll('#fileList li').forEach(li => li.classList.remove('selected'));
+    element.classList.add('selected');
+}
+
+function saveProfile() {
+    const profileName = document.getElementById('profileName').value;
+    if (!profileName) {
+        alert('Please enter a profile name');
+        return;
+    }
+    const profile = {
+        name: profileName,
+        protocol: document.getElementById('protocol').value,
+        server: document.getElementById('server').value,
+        port: document.getElementById('port').value,
+        username: document.getElementById('username').value
+    };
+    const profiles = JSON.parse(localStorage.getItem('profiles') || '[]');
+    profiles.push(profile);
+    localStorage.setItem('profiles', JSON.stringify(profiles));
+    updateProfileList();
+}
+
+function updateProfileList() {
+    const profiles = JSON.parse(localStorage.getItem('profiles') || '[]');
+    const select = document.getElementById('savedProfiles');
+    select.innerHTML = '<option value="">Select a profile</option>';
+    profiles.forEach((profile, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = profile.name;
+        select.appendChild(option);
+    });
+}
+
+function deleteProfile() {
+    const select = document.getElementById('savedProfiles');
+    const index = select.value;
+    if (index) {
+        const profiles = JSON.parse(localStorage.getItem('profiles') || '[]');
+        profiles.splice(index, 1);
+        localStorage.setItem('profiles', JSON.stringify(profiles));
+        updateProfileList();
+    }
+}
+
+document.getElementById('savedProfiles').onchange = function() {
+    const profiles = JSON.parse(localStorage.getItem('profiles') || '[]');
+    const profile = profiles[this.value];
+    if (profile) {
+        document.getElementById('protocol').value = profile.protocol;
+        document.getElementById('server').value = profile.server;
+        document.getElementById('port').value = profile.port;
+        document.getElementById('username').value = profile.username;
+        updateDefaultPort();
+    }
+};
+
+function uploadFile() {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.onchange = (event) => {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('path', currentPath);
+        axios.post('/upload', formData)
+            .then(response => {
+                alert(response.data.message);
+                listFiles(currentPath);
+            })
+            .catch(error => alert(error.response.data.message));
+    };
+    fileInput.click();
+}
+
+function downloadFile() {
+    const selectedFile = document.querySelector('#fileList li.selected');
+    if (selectedFile && selectedFile.textContent !== '..') {
+        const path = currentPath + '/' + selectedFile.textContent;
+        window.location.href = `/download?path=${encodeURIComponent(path)}`;
+    } else {
+        alert('Please select a file to download');
+    }
+}
+
+function renameFile() {
+    const selectedFile = document.querySelector('#fileList li.selected');
+    if (selectedFile && selectedFile.textContent !== '..') {
+        const oldName = selectedFile.textContent;
+        const newName = prompt('Enter new name:', oldName);
+        if (newName && newName !== oldName) {
+            const oldPath = currentPath + '/' + oldName;
+            const newPath = currentPath + '/' + newName;
+            axios.post('/rename', { oldPath, newPath })
+                .then(response => {
+                    alert(response.data.message);
+                    listFiles(currentPath);
+                })
+                .catch(error => alert(error.response.data.message));
+        }
+    } else {
+        alert('Please select a file or folder to rename');
+    }
+}
+
+function deleteFile() {
+    const selectedFile = document.querySelector('#fileList li.selected');
+    if (selectedFile && selectedFile.textContent !== '..') {
+        if (confirm('Are you sure you want to delete this file/folder?')) {
+            const path = currentPath + '/' + selectedFile.textContent;
+            axios.post('/delete', { path })
+                .then(response => {
+                    alert(response.data.message);
+                    listFiles(currentPath);
+                })
+                .catch(error => alert(error.response.data.message));
+        }
+    } else {
+        alert('Please select a file or folder to delete');
+    }
+}
+
+function changePermissions() {
+    const selectedFile = document.querySelector('#fileList li.selected');
+    if (selectedFile && selectedFile.textContent !== '..') {
+        const permissions = prompt('Enter new permissions (e.g., 755):');
+        if (permissions) {
+            const path = currentPath + '/' + selectedFile.textContent;
+            axios.post('/chmod', { path, permissions })
+                .then(response => {
+                    alert(response.data.message);
+                    listFiles(currentPath);
+                })
+                .catch(error => alert(error.response.data.message));
+        }
+    } else {
+        alert('Please select a file or folder to change permissions');
+    }
+}
+
+function matrixEffect() {
+    const title = document.getElementById('matrixTitle');
+    const text = title.textContent;
+    let i = 0;
+    title.textContent = '';
+    const interval = setInterval(() => {
+        if (i < text.length) {
+            title.textContent += text[i];
+            i++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 100);
+}
+
+window.onload = function() {
+    updateProfileList();
+    matrixEffect();
+    updateDefaultPort();
+};
+
+-----------------------------
+=== ./lft-deepseek/app/models.py ===
+from flask_login import UserMixin
+
+class User(UserMixin):
+    def __init__(self, id):
+        self.id = id
+    
+    @staticmethod
+    def get(user_id):
+        # This is a simple example - replace with your actual user lookup
+        return User(user_id) if user_id else None
+
+-----------------------------
+=== ./lft-deepseek/app/routes.py ===
+from flask import render_template, redirect, url_for
+from flask_login import login_required, current_user, login_user, logout_user
+from .models import User
+
+main_blueprint = Blueprint('main', __name__)
+
+@main_blueprint.route('/')
+@login_required
+def index():
+    return render_template('index.html')
+
+@main_blueprint.route('/login')
+def login():
+    # This is a simplified login - implement proper authentication
+    user = User.get(1)  # Replace with actual user authentication
+    login_user(user)
+    return redirect(url_for('main.index'))
+
+@main_blueprint.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('main.index'))
+
+-----------------------------
+=== ./lft-deepseek/app/__init__.py ===
+from flask import Flask
+from flask_login import LoginManager
+from flask_socketio import SocketIO
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your-very-secret-key-here'  # Change this to a real secret key
+
+# Initialize Flask-Login
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'main.login'  # Specify your login route
+from .models import User
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
+
+# Initialize SocketIO
+socketio = SocketIO(app)
+
+# Import blueprints and routes (must be after app creation to avoid circular imports)
+from .routes import main_blueprint
+app.register_blueprint(main_blueprint)
+
+-----------------------------
+=== ./lft-deepseek/app/templates/terminal.html ===
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/terminal.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>SHELLNON Pro - Terminal</h1>
+<div class="terminal-container">
+    <div id="terminal"></div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/terminal.js') }}"></script>
+{% endblock %}
+
+-----------------------------
+=== ./lft-deepseek/app/templates/500.html ===
+{% extends "base.html" %}
+{% block title %}Server Error{% endblock %}
+{% block content %}
+<h2>500 - Internal Server Error</h2>
+<p>Sorry — an unexpected error occurred. Check server logs for details.</p>
+<p><a href="{{ url_for('index') }}">Back to home</a></p>
+{% endblock %}
+
+
+-----------------------------
+=== ./lft-deepseek/app/templates/base.html ===
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHELLNON Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        {% include 'sidebar.html' %}
+        <div class="main-content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+-----------------------------
+=== ./lft-deepseek/app/templates/404.html ===
+{% extends "base.html" %}
+{% block title %}404 Not Found{% endblock %}
+{% block content %}
+<h2>404 - Not Found</h2>
+<p>The page or resource you requested was not found.</p>
+<p><a href="{{ url_for('index') }}">Back to home</a></p>
+{% endblock %}
+
+
+-----------------------------
+=== ./lft-deepseek/app/templates/browse.html ===
+{% extends "base.html" %}
+{% block title %}Browse - LTF{% endblock %}
+{% block content %}
+<h2>Browse files</h2>
+
+{% if files %}
+  <ul>
+    {% for f in files %}
+      <li>{{ f }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No files to display.</p>
+{% endif %}
+
+<p><a href="{{ url_for('index') }}">Back to home</a></p>
+{% endblock %}
+
+
+-----------------------------
+=== ./lft-deepseek/app/templates/index.html ===
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHELLNON Pro</title>
+    <style>
+        :root {
+            --bg-color: #1e1e2e;
+            --panel-color: #2a2a3a;
+            --accent-color: #7aa2f7;
+            --text-color: #c0caf5;
+            --text-secondary: #a9b1d6;
+            --success-color: #9ece6a;
+            --warning-color: #e0af68;
+            --error-color: #f7768e;
+            --border-radius: 8px;
+        }
+        
+        body {
+            font-family: 'DejaVu Sans Mono', monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .sidebar {
+            background-color: var(--panel-color);
+            border-radius: var(--border-radius);
+            padding: 15px;
+        }
+        
+        .main-content {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .panel {
+            background-color: var(--panel-color);
+            border-radius: var(--border-radius);
+            padding: 15px;
+        }
+        
+        h1, h2, h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+        
+        h1 {
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        li {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(192, 202, 245, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid rgba(192, 202, 245, 0.1);
+        }
+        
+        th {
+            color: var(--accent-color);
+        }
+        
+        .terminal {
+            background-color: #16161e;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            font-family: 'DejaVu Sans Mono', monospace;
+            height: 300px;
+            overflow-y: auto;
+        }
+        
+        .terminal-line {
+            display: flex;
+            margin-bottom: 5px;
+        }
+        
+        .prompt {
+            color: var(--success-color);
+            margin-right: 10px;
+        }
+        
+        .command-input {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-family: 'DejaVu Sans Mono', monospace;
+            width: 100%;
+            outline: none;
+        }
+        
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .btn-secondary {
+            background-color: var(--panel-color);
+            color: var(--text-color);
+        }
+        
+        .service-tag {
+            display: inline-block;
+            background-color: rgba(122, 162, 247, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+        
+        .tab-container {
+            display: flex;
+            border-bottom: 1px solid rgba(192, 202, 245, 0.1);
+            margin-bottom: 15px;
+        }
+        
+        .tab {
+            padding: 8px 15px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .tab.active {
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Services</h2>
+            <ul>
+                <li>Hostinger<br><span class="text-secondary">arv9t8s6.hstgr.doud@Ssh.</span></li>
+                <li>Icloud<br><span class="text-secondary">93k83f372@SHVQ</span></li>
+            </ul>
+            
+            <h2>Production</h2>
+            <ul>
+                <li>AWS EC2<br><span class="text-secondary">demo.ahellngn.com @S..</span></li>
+                <li>Elastic Beanstalk<br><span class="text-secondary">demo.ahellngn.com @S..</span></li>
+                <li>Load Balancer<br><span class="text-secondary">demo.ahellngn.com @S..</span></li>
+                <li>MongoDB<br><span class="text-secondary">demo.ahellngn.com @S..</span></li>
+                <li>Backup Server<br><span class="text-secondary">demo.ahellngn.com @S..</span></li>
+                <li>File Server<br><span class="text-secondary">demo.ahellngn.com @S..</span></li>
+            </ul>
+            
+            <h2>Network</h2>
+            <ul>
+                <li>/docker/LTF</li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <h1>SHELLNON Pro</h1>
+            
+            <div class="tab-container">
+                <div class="tab active" data-tab="terminal">Terminal</div>
+                <div class="tab" data-tab="files">Files</div>
+                <div class="tab" data-tab="transfer">Transfer</div>
+                <div class="tab" data-tab="servers">Servers</div>
+                <div class="tab" data-tab="settings">Settings</div>
+            </div>
+            
+            <div class="tab-content active" id="terminal">
+                <div class="terminal" id="terminal-output">
+                    <div class="terminal-line">
+                        <span class="prompt">lanlinediCloud-4 $</span> ls
+                    </div>
+                    <div>list_structure.txt: package-lock.json</div>
+                    <div class="terminal-line">
+                        <span class="prompt">lanlinediCloud-4 $</span> cd /docker/LTF
+                    </div>
+                    <div>-spi: cd: /docker/LTF; No such file or directory</div>
+                    <div class="terminal-line">
+                        <span class="prompt">lanlinediCloud-4 $</span> cd /volume1/docker/LTF
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">lanlinediCloud:/volume1/docker/LTF8 $</span> ls
+                    </div>
+                    <div>lf -app: tar    lisr_structure.sh   list_structure.txt   upload_to_github.py</div>
+                    <div class="terminal-line">
+                        <span class="prompt">lanlinediCloud:/volume1/docker/LTF8 $</span> ./list_structure.sh
+                    </div>
+                    <div>Uploaded as list_structurevs.txt to laninfo5/large.txt-files</div>
+                    <div class="terminal-line">
+                        <span class="prompt">lanlinediCloud:/volume1/docker/LTF8 $</span>
+                        <input type="text" class="command-input" id="command-input" autofocus>
+                    </div>
+                </div>
+                
+                <div class="panel">
+                    <h3>Warning</h3>
+                    <p>Using terminal commands to modify system configs, execute external binary files, add files, or install unauthorized third-party apps may lead to system damage or unexpected behavior, or cause data loss. Make sure you are aware of the consequences of each command and proceed at your own task.</p>
+                    <p>Warning: Data should only be stored in shared folders. Data stored elsewhere may be deleted when the system is updated/restarted.</p>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="files">
+                <div class="panel">
+                    <h3>/docker/LTF</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Size</th>
+                                <th>Modified</th>
+                                <th>Perm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>LFT_DOCKER.v2</td>
+                                <td>250 Bytes</td>
+                                <td>09/07/2024 15:31:16</td>
+                                <td>drwxrwwr...</td>
+                            </tr>
+                            <tr>
+                                <td>LTF_DOCKER</td>
+                                <td>420 Bytes</td>
+                                <td>09/08/2025 06:31:05</td>
+                                <td>drwxrwwr...</td>
+                            </tr>
+                            <tr>
+                                <td>fft-app for</td>
+                                <td>171 MB</td>
+                                <td>09/07/2024 01:02:18</td>
+                                <td>-rwxrwwrww</td>
+                            </tr>
+                            <tr>
+                                <td>list_structure.sh</td>
+                                <td>3 KB</td>
+                                <td>09/08/2025 04:07:39</td>
+                                <td>-rwxrwwrww</td>
+                            </tr>
+                            <tr>
+                                <td>list_structure.txt</td>
+                                <td>2 MB</td>
+                                <td>10/08/2025 06:23:13</td>
+                                <td>-rwxrwwrww</td>
+                            </tr>
+                            <tr>
+                                <td>upload_to_github.pg</td>
+                                <td>2 KB</td>
+                                <td>10/08/2025 06:23:13</td>
+                                <td>-rwxrwwrww</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="transfer">
+                <div class="panel">
+                    <h2>Welcome to LTF</h2>
+                    <p>Manage file transfers intelligently with a sleek, responsive interface.</p>
+                    
+                    <h3>Select a file to upload</h3>
+                    <p><strong>Choisir un fichier</strong><br>
+                    Aucun fichier choisi</p>
+                    
+                    <button class="btn">Upload File</button>
+                    <button class="btn btn-secondary">Browse Files</button>
+                    <button class="btn btn-secondary">Download</button>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="servers">
+                <div class="panel">
+                    <h3>Server Details</h3>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Protocol</th>
+                            <th>Icon</th>
+                        </tr>
+                        <tr>
+                            <td>Server Name</td>
+                            <td>SSH-V2</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>Port</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Host Name or IP</td>
+                            <td>22</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Identity</td>
+                            <td>(Manage)</td>
+                            <td>Authentication</td>
+                        </tr>
+                        <tr>
+                            <td>Custom Identity</td>
+                            <td>Password</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Username</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Login Username</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Login Password</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Notes</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="settings">
+                <div class="panel">
+                    <h3>Preferences</h3>
+                    <ul>
+                        <li>Shellingn UI Theme: Dark</li>
+                        <li>Terminal Theme: Molekal</li>
+                        <li>Terminal Font: DejaVu Sans Mono</li>
+                        <li>Text Editor Theme: Dracula</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+                
+                // Focus command input if terminal tab is selected
+                if (tabId === 'terminal') {
+                    document.getElementById('command-input').focus();
+                }
+            });
+        });
+        
+        // Terminal functionality
+        const terminalOutput = document.getElementById('terminal-output');
+        const commandInput = document.getElementById('command-input');
+        
+        commandInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const command = commandInput.value.trim();
+                if (command) {
+                    // Add the command to the output
+                    const commandLine = document.createElement('div');
+                    commandLine.className = 'terminal-line';
+                    commandLine.innerHTML = `<span class="prompt">lanlinediCloud:/volume1/docker/LTF8 $</span> ${command}`;
+                    terminalOutput.insertBefore(commandLine, commandInput.parentNode);
+                    
+                    // Process the command (simplified for demo)
+                    let output = '';
+                    if (command === 'ls') {
+                        output = 'lf -app: tar    lisr_structure.sh   list_structure.txt   upload_to_github.py';
+                    } else if (command.startsWith('cd ')) {
+                        output = `-spi: cd: ${command.substring(3)}: No such file or directory`;
+                    } else if (command === 'clear') {
+                        terminalOutput.innerHTML = '';
+                        const inputLine = document.createElement('div');
+                        inputLine.className = 'terminal-line';
+                        inputLine.innerHTML = `<span class="prompt">lanlinediCloud:/volume1/docker/LTF8 $</span>
+                                              <input type="text" class="command-input" id="command-input" autofocus>`;
+                        terminalOutput.appendChild(inputLine);
+                        commandInput = document.getElementById('command-input');
+                        commandInput.focus();
+                        return;
+                    } else {
+                        output = `-spi: ${command}: command not found`;
+                    }
+                    
+                    // Add the output
+                    if (output) {
+                        const outputDiv = document.createElement('div');
+                        outputDiv.textContent = output;
+                        terminalOutput.insertBefore(outputDiv, commandInput.parentNode);
+                    }
+                    
+                    // Clear the input and keep focus
+                    commandInput.value = '';
+                }
+            }
+        });
+        
+        // File transfer functionality would be added here
+        // SFTP/FTP/WebDAV integration would require backend implementation
+    </script>
+</body>
+</html>
+-----------------------------
+=== ./lft-deepseek/requirements.txt ===
+flask==2.0.3
+werkzeug==2.0.3
+python-dotenv==0.19.0
+paramiko==2.11.0
+flask-socketio==5.3.2
+eventlet==0.33.3
+
+-----------------------------
+=== ./lft-deepseek/config/settings.py ===
+SECRET_KEY = 'your-secret-key-here'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///app.db'
+
+-----------------------------
+=== ./lft-deepseek/Dockerfile ===
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 5050
+CMD ["python", "main.py"]
+
+-----------------------------
+=== ./lft-deepseek/docker-compose.yml ===
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5050:5050"
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+  guacd:
+    image: guacamole/guacd
+    restart: unless-stopped
+
+  guacamole:
+    image: guacamole/guacamole
+    depends_on:
+      - guacd
+    ports:
+      - "8081:8080"
+    environment:
+      - GUACD_HOSTNAME=guacd
+    restart: unless-stopped
+
+-----------------------------
+=== ./lft-deepseek/writing ===
+
+-----------------------------
+=== ./lft-deepseek/build_and_run.sh ===
+#!/bin/bash
+
+# ~/LTF/LFT_DOCKER/build_and_run.sh
+
+# Stop and remove any existing container with the same name
+docker stop lft-app-container 2>/dev/null
+docker rm lft-app-container 2>/dev/null
+
+# Build the Docker image
+echo "Building Docker image..."
+docker build -t lft-app .
+
+# Check if the build was successful
+if [ $? -eq 0 ]; then
+    echo "Docker image built successfully."
+    
+    # Run the Docker container
+    echo "Starting the container..."
+    docker run -d --name lft-app-container -p 5000:5000 lft-app
+    
+    # Check if the container started successfully
+    if [ $? -eq 0 ]; then
+        echo "Container started successfully."
+        echo "LFT application is now running on http://localhost:5000"
+    else
+        echo "Failed to start the container."
+    fi
+else
+    echo "Docker image build failed."
+fi
+
+-----------------------------
+=== ./lft-deepseek/exporting ===
+
+-----------------------------
+=== ./lft-deepseek/main.py ===
+from flask import Flask, render_template, request, redirect, url_for, flash
+import paramiko
+import os
+
+app = Flask(__name__, template_folder="templates", static_folder="static")
+app.secret_key = os.urandom(24)
+
+@app.route('/')
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route('/ssh')
+def ssh_client():
+    return render_template('ssh_terminal.html')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5050, debug=True)
+
+-----------------------------
+=== ./lft-deepseek/= ===
+
+-----------------------------
+=== ./lft-deepseek/reading ===
+
+-----------------------------
+=== ./lft-deepseek/CACHED ===
+
+-----------------------------
+=== ./lft-deepseek/[internal] ===
+
+-----------------------------
+=== ./lft-deepseek/transferring ===
+
+-----------------------------
+=== ./lft-deepseek/templates/dashboard.html ===
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Server Management</title>
+</head>
+<body>
+    <h1>All-In-One Server Management</h1>
+    <div>
+        <a href="/ssh">SSH Client</a>
+    </div>
+</body>
+</html>
+
+-----------------------------
+=== ./lft-deepseek/templates/ssh_terminal.html ===
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SSH Terminal</title>
+</head>
+<body>
+    <h1>Web SSH Client</h1>
+    <div id="terminal"></div>
+</body>
+</html>
+
+-----------------------------
+=== ./lft-deepseek/naming ===
+
+-----------------------------
+=== ./lft-deepseek/resolving ===
+
+-----------------------------
