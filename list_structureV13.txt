@@ -1,0 +1,8 @@
+----- Directory Structure -----
+./IMG
+./IMG/img5.jpg
+./IMG/img4.jpg
+./IMG/img2.jpg
+./IMG/img3.jpg
+
+----- Text Files Contents -----
