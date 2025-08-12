@@ -1,0 +1,4 @@
+----- Directory Structure -----
+./IMG
+
+----- Text Files Contents -----
